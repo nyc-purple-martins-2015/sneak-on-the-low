@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20151112203858) do
     t.string   "content",          null: false
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.integer  "commentor_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["commentor_id"], name: "index_comments_on_commentor_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "question_tags", force: true do |t|
     t.integer  "question_id"
@@ -76,11 +76,12 @@ ActiveRecord::Schema.define(version: 20151112203858) do
   create_table "votes", force: true do |t|
     t.integer  "voteable_id"
     t.string   "voteable_type"
-    t.integer  "voter_id"
+    t.integer  "user_id"
+    t.integer  "value",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["voter_id"], name: "index_votes_on_voter_id", using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
 end

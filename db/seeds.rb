@@ -36,3 +36,23 @@ users.each do |user|
     answers << Answer.create(user_id: user.id, question_id: question.id, content: Faker::Lorem.sentence(1))
   end
 end
+
+users.each do |user|
+  questions.each do |question|
+    if question.user_id == user.id
+      next
+    end
+
+    question.comments.create(user_id: user.id, content: Faker::Lorem.sentence(1))
+    question.votes.create(user_id: user.id, value: 1)
+  end
+
+  answers.each do |answer|
+    if answer.user_id == user.id
+      next
+    end
+
+    answer.comments.create(user_id: user.id, content: Faker::Lorem.sentence(1))
+    answer.votes.create(user_id: user.id, value: 1)
+  end
+end
