@@ -6,5 +6,5 @@ class Question < ActiveRecord::Base
   has_many :question_tags
   has_many :tags, through: :question_tags
 
-  validates_presence_of :title, :content, :author_id
+  validates_presence_of :title, :content, :author
 end
