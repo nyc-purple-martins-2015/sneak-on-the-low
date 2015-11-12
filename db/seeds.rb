@@ -13,19 +13,26 @@ andre = User.create(username: "andre", email: "andre@gmail.com", password: "pass
 
 users = [nick, june, tahrim, andre]
 questions = []
+answers = []
+
+tags= [Tag.create(name: "sports"), Tag.create(name: "celebs"), Tag.create(name: "music")]
+
 users.each do |user|
   3.times do
-    questions << user.questions.create(title: Faker::Book.title, content: Faker::Lorem.paragraph(1))
+    question = user.questions.create(title: Faker::Book.title, content: Faker::Lorem.paragraph(1))
+    questions << question
+    QuestionTag.create(question_id: question.id, tag_id: rand(1..3))
   end
 end
 
 
+
 users.each do |user|
   questions.each do |question|
-    if question.author_id == user.id
+    if question.user_id == user.id
       next
     end
 
-    Answer.create(author_id: user.id, question_id: question.id, content: Faker::Lorem.sentence(1))
+    answers << Answer.create(user_id: user.id, question_id: question.id, content: Faker::Lorem.sentence(1))
   end
 end

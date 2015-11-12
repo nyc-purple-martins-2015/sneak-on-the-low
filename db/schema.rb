@@ -17,14 +17,16 @@ ActiveRecord::Schema.define(version: 20151112203858) do
   enable_extension "plpgsql"
 
   create_table "answers", force: true do |t|
-    t.string   "content",                    null: false
-    t.boolean  "best",       default: false
-    t.integer  "author_id"
+    t.string   "content",                     null: false
+    t.boolean  "best",        default: false
+    t.integer  "user_id"
+    t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "answers", ["author_id"], name: "index_answers_on_author_id", using: :btree
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+  add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.string   "content",          null: false
@@ -37,6 +39,16 @@ ActiveRecord::Schema.define(version: 20151112203858) do
 
   add_index "comments", ["commentor_id"], name: "index_comments_on_commentor_id", using: :btree
 
+  create_table "question_tags", force: true do |t|
+    t.integer  "question_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "question_tags", ["question_id"], name: "index_question_tags_on_question_id", using: :btree
+  add_index "question_tags", ["tag_id"], name: "index_question_tags_on_tag_id", using: :btree
+
   create_table "questions", force: true do |t|
     t.string   "title",      null: false
     t.string   "content",    null: false
@@ -46,16 +58,6 @@ ActiveRecord::Schema.define(version: 20151112203858) do
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
-
-  create_table "questiontags", force: true do |t|
-    t.integer  "question_id"
-    t.integer  "tag_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "questiontags", ["question_id"], name: "index_questiontags_on_question_id", using: :btree
-  add_index "questiontags", ["tag_id"], name: "index_questiontags_on_tag_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name",       null: false
