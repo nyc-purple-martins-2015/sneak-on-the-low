@@ -5,3 +5,27 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+nick = User.create(username: "nick", email: "nick@gmail.com", password: "password")
+june = User.create(username: "june", email: "june@gmail.com", password: "password")
+tahrim = User.create(username: "tahrim", email: "tahrim@gmail.com", password: "password")
+andre = User.create(username: "andre", email: "andre@gmail.com", password: "password")
+
+users = [nick, june, tahrim, andre]
+questions = []
+users.each do |user|
+  3.times do
+    questions << user.questions.create(title: Faker::Book.title, content: Faker::Lorem.paragraph(1))
+  end
+end
+
+
+users.each do |user|
+  questions.each do |question|
+    if question.author_id == user.id
+      next
+    end
+
+    Answer.create(author_id: user.id, question_id: question.id, content: Faker::Lorem.sentence(1))
+  end
+end
