@@ -1,0 +1,24 @@
+<div class="new-question">
+  <h1>Ask new question</h1>
+
+  <%= form_for @question do |f| %>
+
+    <%= f.hidden_field :user_id, value: current_user.id%>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+
+
+  <p>
+    <%= f.label :content %><br>
+    <%= f.text_area :content, rows: 5, cols: 50 %>
+  </p>
+
+  <p>
+    <%= f.submit 'Ask!'%>
+  </p>
+
+  <% end %>
+
+</div>
