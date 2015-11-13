@@ -1,0 +1,6 @@
+<div class="votecount"><%= answer.votes.sum(:value) %></div>
+<div class="votebuttons">
+   <div><%= link_to image_tag("glyphicons-202-upload.png", :border => 0), votes_path(answer.id, vote: {value: 1, user_id: session[:user_id], voteable_id: answer.id, voteable_type: "Answer"}, question_id: answer.question.id ), method: :post %></div>
+  <div><%= link_to image_tag("glyphicons-201-download.png", :border => 0), votes_path(answer.id, vote: {value: -1, user_id: session[:user_id], voteable_id: answer.id, voteable_type: "Answer"}, question_id: answer.question.id ), method: :post %></div>
+</div>
+

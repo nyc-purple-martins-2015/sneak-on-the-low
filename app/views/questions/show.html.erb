@@ -3,7 +3,7 @@
 </div>
 <div class="question-content">
   <span class="question-vote">
-    <%= render partial: 'votes/vote_logic', :layout => false, locals: {question: @question} %>
+    <%= render partial: 'votes/question_vote_logic', :layout => false, locals: {question: @question} %>
    </span>
   Body: <%= @question.content %>
 </div>
@@ -17,6 +17,7 @@
 <div class="question-title">Answers:</div>
 
 <% @question.answers.each do |answer| %>
+  <%= render partial: 'votes/answer_vote_logic', :layout => false, locals: {answer: answer} %>
   <%= render partial: 'answers/answer', :layout => false, locals: {answer: answer} %>
   <% answer.comments.each do |comment| %>
     <%= render partial: 'comments/answer_comment', :layout => false, locals: {comment: comment} %>
