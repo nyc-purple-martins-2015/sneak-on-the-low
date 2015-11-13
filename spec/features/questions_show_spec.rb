@@ -1,12 +1,22 @@
 require 'rails_helper'
 
-feature 'Admin panel' do
+feature 'Index Page' do
 
-  context "on root page (questions#index)" do
-    it "can see a list of all questions that have been asked" do
+  let!(:questions) {FactoryGirl.create(:question)}
+
+  context "the root page (questions#index)" do
+    it "has a questions title" do
       visit questions_path
-      expect(page.body).to have_content("Questions")
+      expect(page).to have_content("Questions")
+    end
+
+    it "has a list of links for each question" do
+      visit questions_path
+
+      expect(page).to have_content("Questions")
     end
   end
+
+
 
 end

@@ -19,6 +19,9 @@
         null,
         null,
         1,
+        1,
+        null,
+        1,
         null
       ],
       "/Users/apprentice/Desktop/sneak-on-the-low/app/models/question.rb": [
@@ -34,6 +37,6 @@
         null
       ]
     },
-    "timestamp": 1447434305
+    "timestamp": 1447434947
   }
 }
