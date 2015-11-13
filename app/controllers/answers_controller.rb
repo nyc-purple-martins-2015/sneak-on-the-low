@@ -4,9 +4,9 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = current_users.answers.new(answer_params)
+    @answer = current_user.answers.new(answer_params)
     if @answer.save
-      redirect_to root_path
+      redirect_to question_path(@answer.question)
     else
       render :new
     end
@@ -15,6 +15,6 @@ class AnswersController < ApplicationController
   private
 
   def answer_params
-    answer_params = params.require(:answer).permit(:content)
+    answer_params = params.require(:answer).permit(:content, :question_id)
   end
 end
