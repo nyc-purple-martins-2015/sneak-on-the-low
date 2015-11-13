@@ -1,7 +1,7 @@
 <div class="best-answer">
-  <%= form_for answer, :method => :PUT do |f| %>
-  <%= f.label :best %>
-  <%= f.checkbox :best {}, true, false %>
-  <%= f.submit 'Best Answer!' %>
+  <%= form_tag edit_answer_path, :method => :PUT do |f| %>
+  <%= label_tag :best %>
+  <%= check_box_tag :best {}, true %>
+  <%= submit_tag 'Best Answer!' %>
   <% end %>
 </div>
