@@ -1,4 +1,7 @@
+## Customize the test machine
+machine:
 
-ruby:
-  version:
-    2.2.1p85
+  # Version of ruby to use
+  ruby:
+    version:
+      2.2.1p85
