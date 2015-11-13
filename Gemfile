@@ -31,11 +31,12 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'pry'
 gem 'byebug'
-gem 'factory_girl_rails', group: :development
+gem 'factory_girl_rails', :group => :test
 gem 'faker', group: :development
 gem 'rspec-rails', group: :development
 gem 'simplecov', :require => false, :group => :test
 gem 'capybara', :group => :test
+gem 'launchy', :group => :test
 
 
 group :test do
