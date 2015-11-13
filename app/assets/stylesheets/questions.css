@@ -32,3 +32,19 @@
   border: 2px black solid;
   margin-left: 5%;
 }
+.votebutton {
+  display: inline-block;
+
+}
+
+/*
+.imgBox {
+width: 30px;
+height: 30px;
+background: url("glyphicons-202-upload.png") no-repeat;
+}
+.imgBox:hover {
+ -moz-box-shadow: 0 0 10px #ccc;
+ -webkit-box-shadow: 0 0 10px #ccc;
+box-shadow: 0 0 10px #ccc;
+}*/
