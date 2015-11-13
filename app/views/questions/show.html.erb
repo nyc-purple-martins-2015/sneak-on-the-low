@@ -1,0 +1,22 @@
+<div class="question-title">
+  Question: <%= @question.title %>
+</div>
+<div class="question-content">
+  Body: <%= @question.content %>
+</div>
+<div class="question-comments">
+  <h3> Comments </h3>
+  <% @question.comments.each do |comment| %>
+    <%= render partial: 'comments/question_comment', :layout => false, locals: {comment: comment} %>
+  <% end %>
+</div>
+
+<div class="question-title">Answers:</div>
+
+<% @question.answers.each do |answer| %>
+  <%= render partial: 'answers/answer', :layout => false, locals: {answer: answer} %>
+  <% answer.comments.each do |comment| %>
+    <%= render partial: 'comments/answer_comment', :layout => false, locals: {comment: comment} %>
+  <% end %>
+<% end %>
+
