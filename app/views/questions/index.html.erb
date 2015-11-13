@@ -1,5 +1,15 @@
 <h1> Questions </h1>
 
 <% @questions.each do |question| %>
-  <div><%= link_to question.title, question %></div>
+<!-- The votes and answers sum queries here is costly because they hits the database. We would need to add an attribute to questions that has it's vote and answers count that auto-updates -->
+  <div>
+    <div><%= link_to question.title, question %></div>
+    <span id="Answers<%= question.id %>">Answers: <%= question.answers.count %> </span>
+    <span id="Votes<%= question.id %>">| Votes: <%= question.votes.sum(:value) %> </span>
+    <div>Tags:
+    <% question.tags.each do |tag| %>
+    <span><%= link_to tag.name, questions_path %></span>
+    <% end %>
+    </div>
+  </div><br>
 <% end %>
