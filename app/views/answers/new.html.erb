@@ -1,5 +1,5 @@
 <%= form_for @answer do |f| %>
-
+  <%= f.hidden_field :question_id, :value => question.id %>
   <p>
   <%= f.label :content %><br>
   <%= f.text_area :content, size: "60x12" %>
