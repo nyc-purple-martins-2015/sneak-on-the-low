@@ -9,16 +9,20 @@
     <%= f.text_field :title %>
   </p>
 
-
   <p>
     <%= f.label :content %><br>
     <%= f.text_area :content, rows: 5, cols: 50 %>
   </p>
 
+    <%= f.fields_for @tag do |t| %>
+    <p>
+      <%= t.label :tags %><br>
+      <%= t.text_field :name, placeholder: "tag1, tag2, etc." %>
+    </p>
   <p>
     <%= f.submit 'Ask!'%>
   </p>
-
+    <% end %>
   <% end %>
 
 </div>
