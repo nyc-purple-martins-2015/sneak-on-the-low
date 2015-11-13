@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'Index Page' do
 
-  let!(:questions) {FactoryGirl.create(:question)}
 
   context "the root page (questions#index)" do
     it "has a questions title" do
