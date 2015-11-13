@@ -1,0 +1,9 @@
+header {
+  background-color: lightgreen;
+  border-bottom: 2px solid black;
+  font-size: 2em;
+}
+
+header a {
+  text-decoration: none;
+}
