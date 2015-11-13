@@ -12,10 +12,10 @@ class QuestionsController < ApplicationController
   def create
     if current_user
       @question = Question.new(question_params)
-      tags = @question.tags.new(tag_params)
       if @question.save
         if tag_params != nil
           Tag.seperate_tags(tag_params[:name], @question)
+          tags = @question.tags.new(tag_params)
         end
         redirect_to question_path(@question)
       else
@@ -39,7 +39,7 @@ class QuestionsController < ApplicationController
   end
 
   def tag_params
-   params.require(:question).require(:tag).permit(:name)
+    params.require(:question).require(:tag).permit(:name)
   end
 
 
