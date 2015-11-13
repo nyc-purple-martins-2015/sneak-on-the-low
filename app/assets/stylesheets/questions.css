@@ -32,9 +32,20 @@
   border: 2px black solid;
   margin-left: 5%;
 }
-.votebutton {
+.votebuttons {
   display: inline-block;
+  margin-top: 10px;
 
+}
+
+.votecount {
+  display: inline-block;
+  background-color: lightgreen;
+  font-size: 3em;
+  border-radius: 100%;
+  text-align: center;
+  width: 50px;
+  border: 1px solid black;
 }
 
 /*
