@@ -3,8 +3,8 @@
 </div>
 <div class="question-content">
   <span class="question-vote">
-    <%= render partial: 'votes/vote_logic', :layout => false, locals: {question: @question} %>
-   </span>
+  <%= render partial: 'votes/vote_logic', :layout => false, locals: {question: @question} %>
+  </span>
   Body: <%= @question.content %>
 </div>
 <div class="question-comments">
@@ -23,3 +23,9 @@
   <% end %>
 <% end %>
 
+<% if logged_in? %>
+  <div class="new-answer">
+    <h3>Your Answer</h3>
+    <%= render template: 'answers/new', :layout => false, locals: {question: @question, :@answer => Answer.new } %>
+  </div>
+<% end %>
