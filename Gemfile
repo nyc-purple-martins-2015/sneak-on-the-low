@@ -37,6 +37,11 @@ gem 'rspec-rails', group: :development
 gem 'simplecov', :require => false, :group => :test
 gem 'capybara', :group => :test
 
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.0'
+end
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
