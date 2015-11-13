@@ -12,6 +12,15 @@ class AnswersController < ApplicationController
     end
   end
 
+  def edit
+    @answer = Answer.find(params[:id])
+    if @answer.update_attribute(params[:best])
+      redirect_to question_path(@answer.question)
+    else
+      render :best
+    end
+  end
+
   private
 
   def answer_params
