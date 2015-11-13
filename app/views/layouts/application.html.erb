@@ -8,17 +8,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="header">
-    <%= link_to image_tag("sneak.png", :border => 0), root_path %>
-  <div class="header-right">
-    <% if logged_in? %>
-      <%= current_user.username %> |
-      <%= link_to "Logout", logout_path %>
-    <% else %>
-      <%= link_to "Login", login_path%> |
-      <%= link_to "Sign Up", register_path %>
-    <% end %>
-  </div>
+
+<header>
+  <%= link_to image_tag("sneak.png", :border => 0), root_path %>
+
+  <% if logged_in? %>
+    <span id="header-logged-in">
+    <%= current_user.username %> |
+    <%= link_to "Logout", logout_path %>
+    </span>
+  <% else %>
+    <span id="header-logged-out">
+    <%= link_to "Login", login_path%> |
+    <%= link_to "Sign Up", register_path %>
+  </span>
+  <% end %>
+
+</header>
+<div id="flash-container">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+
 </div>
 <%= yield %>
 

@@ -1,0 +1,57 @@
+#new-question {
+  background-color: lightgrey;
+  margin: 0 auto;
+  height: 1em;
+  width: 7%;
+  position: center;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+#title {
+  margin: 0 auto;
+  position: center;
+  text-align: center;
+}
+
+#each-question {
+  background-color: lightblue;
+  margin: 2em;
+  height: 5em;
+  width: 25%;
+  position: left;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid black;
+  float: left;
+}
+
+#q-title {
+  font-family: times;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.q-answers {
+  font-family: courier;
+  font-size: 19px;
+  margin: 2px;
+}
+
+.q-votes {
+  font-family: courier;
+  font-size: 19px;
+  margin: 2px;
+}
+
+#tags {
+  font-family: times;
+  font-size: 20px;
+  margin: 5px;
+}
+
+#container {
+  margin-left: 6em
+
+}
