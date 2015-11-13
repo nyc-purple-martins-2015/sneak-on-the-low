@@ -11,3 +11,15 @@ header a {
 .alert-warning {
   color: red;
 }
+
+#header-logged-in {
+  float: right;
+  margin-right: 1em;
+  margin-top: .4em;
+}
+
+#header-logged-out {
+  float: right;
+   margin-right: 1em;
+  margin-top: .4em;
+}
