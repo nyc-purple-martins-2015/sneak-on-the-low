@@ -1,30 +1,12 @@
-== README
 
 
 !['circlestatus'](https://circleci.com/gh/nyc-purple-martins-2015/sneak-on-the-low.svg?style=shield&circle-token=:circle-token)
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Sad that Ashley Madison let you down?
+ Need a place to come talk to "relationship status: its complicated" individuals without fear of your personal information being released?
 
-* Ruby version
+ Sneak on the Low has you covered!
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ Check out the newest website for meeting and mingling with others.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
