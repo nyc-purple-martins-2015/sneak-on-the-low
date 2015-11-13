@@ -35,6 +35,7 @@ gem 'factory_girl_rails', group: :development
 gem 'faker', group: :development
 gem 'rspec-rails', group: :development
 gem 'simplecov', :require => false, :group => :test
+gem 'capybara', :group => :test
 
 # Use unicorn as the app server
 # gem 'unicorn'
