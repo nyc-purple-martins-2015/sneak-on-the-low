@@ -22,6 +22,9 @@
 
 <% @question.answers.each do |answer| %>
 
+  <% if @question.author.id == current_user.id %>
+   <%= render partial: "answers/best", :layout => false, locals: {answer: answer} %>
+  <% end %>
   <%= render partial: 'answers/answer', :layout => false, locals: {answer: answer} %>
   <% answer.comments.each do |comment| %>
     <%= render partial: 'comments/answer_comment', :layout => false, locals: {comment: comment} %>
