@@ -8,8 +8,7 @@
    </span>
   <div class="question-body"><span class="author"><%= @question.author.username %></span> <%= @question.content %></div>
 
-  <%= render partial: 'votes/vote_logic', :layout => false, locals: {question: @question} %>
-  </span>
+
   Body: <%= @question.content %>
 
 </div>
