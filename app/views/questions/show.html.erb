@@ -2,7 +2,10 @@
   Question: <%= @question.title %>
 </div>
 <div class="question-content">
-
+  <span class="question-vote">
+  <%= render partial: 'votes/vote_logic', :layout => false, locals: {question: @question} %>
+  </span>
+  Body: <%= @question.content %>
 </div>
 <div class="question-comments">
   <h3> Comments </h3>
@@ -20,8 +23,9 @@
   <% end %>
 <% end %>
 
-<div class="new-answer">
-  <h3>Your Answer</h3>
-  <%= render template: 'answers/new', :layout => false, locals: {question: @question, :@answer => Answer.new } %>
-</div>
-
+<% if logged_in? %>
+  <div class="new-answer">
+    <h3>Your Answer</h3>
+    <%= render template: 'answers/new', :layout => false, locals: {question: @question, :@answer => Answer.new } %>
+  </div>
+<% end %>
