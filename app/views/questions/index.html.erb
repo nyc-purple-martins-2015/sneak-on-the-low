@@ -1,7 +1,7 @@
 <h1> Questions </h1>
 
 <% if logged_in? %>
-    <div><%= button_to "Ask New Question",  %></div>
+    <div><%= button_to "Ask New Question", new_question_path, :method => "get" %></div><br>
 <% end %>
 
 <% @questions.each do |question| %>
