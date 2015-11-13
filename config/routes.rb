@@ -4,10 +4,13 @@ Rails.application.routes.draw do
 
   resources :questions
 
+  resources :sessions, only: [:destory, :new, :create]
+
+  resources :users, only: [:new, :create]
+
   get 'register' => 'users#new', as: :register
   get 'logout' => 'sessions#destroy', as: :logout
   get 'login' => 'sessions#new', as: :login
-  post 'session_create' => 'sessions#create', as: :session_create
   root 'questions#index'
 
 

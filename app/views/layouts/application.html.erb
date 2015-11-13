@@ -8,9 +8,15 @@
 </head>
 <body>
 <header>
-  <%= link_to "Sneak On The Low", root_path %>
-  <%= link_to "Login", login_path%>
-  <%= link_to "Sign Up", register_path %>
+  <%= link_to "Sneak On The Low", root_path %> |
+
+  <% if logged_in? %>
+    <%= current_user.username %> |
+    <%= link_to "Logout", logout_path %>
+  <% else %>
+    <%= link_to "Login", login_path%> |
+    <%= link_to "Sign Up", register_path %>
+  <% end %>
 </header>
 <%= yield %>
 
