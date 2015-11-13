@@ -2,6 +2,9 @@
   Question: <%= @question.title %>
 </div>
 <div class="question-content">
+  <span class="question-vote">
+    <%= render partial: 'votes/vote_logic', :layout => false, locals: {question: @question} %>
+   </span>
   Body: <%= @question.content %>
 </div>
 <div class="question-comments">
