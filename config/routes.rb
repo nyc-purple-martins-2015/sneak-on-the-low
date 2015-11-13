@@ -4,6 +4,14 @@ Rails.application.routes.draw do
 
   resources :questions
 
+  resources :answers, only: [:new, :create]
+
+  resources :votes, only: [:new, :create]
+
+  resources :comments, only: [:new, :create]
+
+  resources :tags, only: [:new, :create, :show]
+
   resources :sessions, only: [:destory, :new, :create]
 
   resources :users, only: [:new, :create]
