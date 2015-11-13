@@ -1,9 +1,18 @@
-header {
-  background-color: lightgreen;
-  border-bottom: 2px solid black;
+body {
+  width: 100%;
+}
+.header {
+
+  border-bottom: 1px solid black;
   font-size: 2em;
+
 }
 
-header a {
+.header a {
   text-decoration: none;
+}
+
+.header-right {
+  float: right;
+  margin-right: 10px;
 }

@@ -2,12 +2,21 @@
   background-color: lightblue;
   border: 2px black solid;
   margin-left: 5%;
+  margin-top: 10px;
 }
 
 .question-title {
-  background-color: lightpink;
-  border: 1px black solid;
+
+
+  font-size: 2em;
+  margin-top: 10px;
+  font-family: 'Yellowtail', cursive;
+}
+
+.answer-title {
   font-size: 1.5em;
+  margin-top: 10px;
+  font-family: 'Yellowtail', cursive;
 }
 
 .question-content {
@@ -15,6 +24,11 @@
   border: 1px black solid;
   font-size: 1.2em;
   margin-left: 2%;
+  margin-top: 10px;
+}
+
+.question-body {
+  display: inline-block;
 }
 
 
@@ -23,6 +37,8 @@
   border: 1px black solid;
   font-size: 1.2em;
   margin-left: 2%;
+  margin-top: 10px;
+
 
 }
 
@@ -32,20 +48,34 @@
   border: 2px black solid;
   margin-left: 5%;
 }
+
+.answervote {
+  display: inline-block;
+
+}
+.answerbody {
+  display: inline-block;
+}
 .votebuttons {
   display: inline-block;
   margin-top: 10px;
 
+
 }
 
+.author {
+  border: 1px black solid;
+}
 .votecount {
   display: inline-block;
-  background-color: lightgreen;
-  font-size: 3em;
+  background: url("votering.png") no-repeat;
+  background-size: 100%;
+  font-size: 2.5em;
   border-radius: 100%;
   text-align: center;
   width: 50px;
-  border: 1px solid black;
+  font-family: 'Yellowtail', cursive;
+
 }
 
 /*

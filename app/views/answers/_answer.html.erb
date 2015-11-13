@@ -1,4 +1,5 @@
 <div class="question-answers">
-  <div><%= answer.author.username %></div>
-  <div><%= answer.content %></div>
+  <%= render partial: 'votes/answer_vote_logic', :layout => false, locals: {answer: answer} %>
+  <div class="answerbody"><%= answer.author.username %>
+  <%= answer.content %></div>
 </div>

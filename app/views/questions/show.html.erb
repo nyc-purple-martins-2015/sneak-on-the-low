@@ -1,23 +1,22 @@
 <div class="question-title">
-  Question: <%= @question.title %>
+ <%= @question.title %>
 </div>
 <div class="question-content">
   <span class="question-vote">
     <%= render partial: 'votes/question_vote_logic', :layout => false, locals: {question: @question} %>
    </span>
-  Body: <%= @question.content %>
+  <div class="question-body"><span class="author"><%= @question.author.username %></span> <%= @question.content %></div>
 </div>
-<div class="question-comments">
-  <h3> Comments </h3>
+
   <% @question.comments.each do |comment| %>
     <%= render partial: 'comments/question_comment', :layout => false, locals: {comment: comment} %>
   <% end %>
-</div>
 
-<div class="question-title">Answers:</div>
+
+<div class="answer-title">Answers:</div>
 
 <% @question.answers.each do |answer| %>
-  <%= render partial: 'votes/answer_vote_logic', :layout => false, locals: {answer: answer} %>
+
   <%= render partial: 'answers/answer', :layout => false, locals: {answer: answer} %>
   <% answer.comments.each do |comment| %>
     <%= render partial: 'comments/answer_comment', :layout => false, locals: {comment: comment} %>
