@@ -1,5 +1,9 @@
 <h1> Questions </h1>
 
+<% if logged_in? %>
+    <div><%= button_to "Ask New Question", new_question_path, :method => "get" %></div><br>
+<% end %>
+
 <% @questions.each do |question| %>
 <!-- The votes and answers sum queries here is costly because they hits the database. We would need to add an attribute to questions that has it's vote and answers count that auto-updates -->
   <div>
@@ -8,7 +12,7 @@
     <span id="Votes<%= question.id %>">| Votes: <%= question.votes.sum(:value) %> </span>
     <div>Tags:
     <% question.tags.each do |tag| %>
-    <span><%= link_to tag.name, questions_path %></span>
+    <span><%= link_to tag.name, tag_path(tag) %></span>
     <% end %>
     </div>
   </div><br>
