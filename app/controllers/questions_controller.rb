@@ -6,15 +6,25 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    @tag = Tag.new
   end
 
   def create
-    @question = Question.new(question_params)
-    if @question.save
-      redirect_to question_path(@question)
+    if current_user
+      @question = Question.new(question_params)
+      tags = @question.tags.new(tag_params)
+      if @question.save
+        if tag_params != nil
+          Tag.seperate_tags(tag_params[:name], @question)
+        end
+        redirect_to question_path(@question)
+      else
+       #flash error message
+        render :new
+      end
     else
       #flash error message
-      render :new
+      redirect_to login_path
     end
   end
 
@@ -23,8 +33,14 @@ class QuestionsController < ApplicationController
   end
 
   private
+
   def question_params
     question_params = params.require(:question).permit(:title, :content, :user_id)
   end
+
+  def tag_params
+   params.require(:question).require(:tag).permit(:name)
+  end
+
 
 end
