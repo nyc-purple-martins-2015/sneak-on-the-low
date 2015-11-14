@@ -14,6 +14,10 @@ class AnswersController < ApplicationController
     end
   end
 
+  def edit
+    @answer = Answer.find(params[:id])
+  end
+
   def update
     @answer = Answer.find(params[:id])
     if @answer.update_attributes(answer_params)
@@ -21,6 +25,13 @@ class AnswersController < ApplicationController
     else
       render :best
     end
+  end
+
+  def destroy
+    @answer = Answer.find(params[:id])
+    @question = @answer.question
+    @answer.destroy
+    redirect_to question_path(@question)
   end
 
   private

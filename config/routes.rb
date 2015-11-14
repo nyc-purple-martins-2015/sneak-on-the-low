@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :questions
 
-  resources :answers, only: [:new, :create, :update]
+  resources :answers
 
   resources :votes, only: [:new, :create]
 
