@@ -1,0 +1,29 @@
+<div class="new-question">
+  <h1>Edit your question</h1>
+
+  <%= form_for @question, method: "put" do |f| %>
+
+    <%= f.hidden_field :user_id, value: current_user.id%>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, value: @question.title %>
+  </p>
+
+  <p>
+    <%= f.label :content %><br>
+    <%= f.text_area :content, rows: 5, cols: 50, value: @question.content %>
+  </p>
+
+    <%= f.fields_for :tag, @tags do |t| %>
+    <p>
+      <%= t.label :tags %><br>
+      <% tag_names = @tags.map(&:name).join(', ') %>
+      <%= t.text_field :name, value: tag_names   %>
+    </p>
+  <p>
+    <%= f.submit 'Ask!'%>
+  </p>
+    <% end %>
+  <% end %>
+
+</div>

@@ -16,6 +16,9 @@
 <% @questions.each do |question| %>
 <!-- The votes and answers sum queries here is costly because they hits the database. We would need to add an attribute to questions that has it's vote and answers count that auto-updates -->
   <div id="each-question">
+    <% if logged_in? && question.user_id == current_user.id %>
+    <div id="edit-delete"><%= link_to image_tag("glyphicons-31-pencil.png", :border => 0), edit_question_path(question), method: :get %> | <%= link_to image_tag("glyphicons-193-circle-remove.png", :border => 0), question_path(question), method: :delete %></div>
+    <% end %>
     <div id="q-title"><%= link_to question.title, question %></div>
     <span class="q-answers" id="Answers<%= question.id %>">Answers: <%= question.answers.count %> </span>
     <span class="q-votes" id="Votes<%= question.id %>">| Votes: <%= question.votes.sum(:value) %> </span>
