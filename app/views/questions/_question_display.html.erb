@@ -1,0 +1,5 @@
+
+<div class="question-body">
+  <span class="author"><%= question.author.username %></span> <%= question.content %>
+  <span class="add-comment"><%= link_to "Add Comment", new_comment_path(comment: {user_id: current_user.id, commentable_id: question.id, commentable_type: "Question"}) %> </span>
+</div>

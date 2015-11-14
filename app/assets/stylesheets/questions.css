@@ -38,10 +38,11 @@
   font-size: 1.2em;
   margin-left: 2%;
   margin-top: 10px;
-
-
 }
 
+.answer-section {
+  background-color: lightpink;
+}
 
 .comment-body {
   background-color: lightblue;

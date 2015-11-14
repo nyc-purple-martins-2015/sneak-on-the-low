@@ -3,45 +3,41 @@
 </div>
 <div class="question-content">
   <span class="question-vote">
-
     <%= render partial: 'votes/question_vote_logic', :layout => false, locals: {question: @question} %>
-   </span>
-  <div class="question-body"><span class="author"><%= @question.author.username %></span> <%= @question.content %></div>
-
-
-  Body: <%= @question.content %>
-
+  </span>
+   <%= render partial: 'question_display', :layout => false, locals: {question: @question} %>
 </div>
 
   <% @question.comments.each do |comment| %>
     <%= render partial: 'comments/question_comment', :layout => false, locals: {comment: comment} %>
   <% end %>
 
-
-<div class="answer-title">Answers:</div>
-  <div class="best-answer-div">
-    <% if @best_answer.any? %>
-    <%= render partial: 'answers/answer', :layout => false, locals: {answer: @best_answer} %>
+<div class="answer-section">
+  <div class="answer-title">Answers:</div>
+    <div class="best-answer-div">
+      <% if @best_answer.any? %>
+      <%= render partial: 'answers/answer', :layout => false, locals: {answer: @best_answer} %>
+      <% end %>
+    </div>
+  <% @question.answers.each do |answer| %>
+    <% if logged_in? %>
+      <% if question_owner?(@question) && @question.answers.where(:best => true).count == 0 %>
+       <%= render template: 'answers/best', :layout => false, locals: {answer: answer} %>
+      <% end %>
     <% end %>
-  </div>
-<% @question.answers.each do |answer| %>
+    <% if answer.best == true %>
+      <%= "Best Answer" %>
+    <% end %>
+    <%= render partial: 'answers/answer', :layout => false, locals: {answer: answer} %>
+    <% answer.comments.each do |comment| %>
+      <%= render partial: 'comments/answer_comment', :layout => false, locals: {comment: comment} %>
+    <% end %>
+  <% end %>
+
   <% if logged_in? %>
-    <% if @question.author.id == current_user.id && @question.answers.where(:best => true).count == 0 %>
-     <%= render template: 'answers/best', :layout => false, locals: {answer: answer} %>
-    <% end %>
+    <div class="new-answer">
+      <h3>Your Answer</h3>
+      <%= render template: 'answers/new', :layout => false, locals: {question: @question, :@answer => Answer.new } %>
+    </div>
   <% end %>
-  <% if answer.best == true %>
-    <%= "Best Answer" %>
-  <% end %>
-  <%= render partial: 'answers/answer', :layout => false, locals: {answer: answer} %>
-  <% answer.comments.each do |comment| %>
-    <%= render partial: 'comments/answer_comment', :layout => false, locals: {comment: comment} %>
-  <% end %>
-<% end %>
-
-<% if logged_in? %>
-  <div class="new-answer">
-    <h3>Your Answer</h3>
-    <%= render template: 'answers/new', :layout => false, locals: {question: @question, :@answer => Answer.new } %>
-  </div>
-<% end %>
+</div>
