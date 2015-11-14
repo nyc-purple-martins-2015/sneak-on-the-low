@@ -12,9 +12,9 @@ class AnswersController < ApplicationController
     end
   end
 
-  def edit
+  def update
     @answer = Answer.find(params[:id])
-    if @answer.update_attribute(params[:best])
+    if @answer.update_attributes(answer_params)
       redirect_to question_path(@answer.question)
     else
       render :best
@@ -24,6 +24,6 @@ class AnswersController < ApplicationController
   private
 
   def answer_params
-    answer_params = params.require(:answer).permit(:content, :question_id)
+    answer_params = params.require(:answer).permit(:content, :question_id, :best)
   end
 end
