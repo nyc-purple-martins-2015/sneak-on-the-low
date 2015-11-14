@@ -51,11 +51,12 @@
 }
 
 .answervote {
-  display: inline-block;
+  float: left;
 
 }
 .answerbody {
-  display: inline-block;
+  margin-top: 3%;
+
 }
 .votebuttons {
   display: inline-block;
@@ -64,8 +65,21 @@
 
 }
 
+.clear {
+  clear: both;
+}
 .author {
   border: 1px black solid;
+}
+
+.comment-author-info {
+  float: right;
+  background-color: red;
+}
+.author-info {
+  float: right;
+  background-color: red;
+
 }
 .votecount {
   display: inline-block;

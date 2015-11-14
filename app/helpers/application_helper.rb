@@ -12,6 +12,6 @@ module ApplicationHelper
   end
 
   def format_time(object)
-    localize(object.updated_at, :format => :long)
+    time_ago_in_words(object.updated_at)
   end
 end
