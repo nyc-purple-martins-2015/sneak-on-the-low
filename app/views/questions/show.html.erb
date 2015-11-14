@@ -1,3 +1,7 @@
+<% if !logged_in? %>
+  <div class="login-prompt"> <%= link_to "Login to Vote or Comment", login_path %> </div>
+<% end %>
+
 <div class="question-title">
  <%= @question.title %>
 </div>

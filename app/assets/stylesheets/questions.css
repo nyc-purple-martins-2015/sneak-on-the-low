@@ -93,6 +93,12 @@
 
 }
 
+.login-prompt {
+  text-align: center;
+  text-decoration: none;
+  background-color: lightgreen;
+  outline: 1px black solid;
+}
 /*
 .imgBox {
 width: 30px;

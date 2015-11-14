@@ -14,4 +14,9 @@ module ApplicationHelper
   def format_time(object)
     time_ago_in_words(object.updated_at)
   end
+
+  def voted_already?(object)
+    comments = object.comments.all
+    comments.exists?(:user_id => current_user.id)
+  end
 end
