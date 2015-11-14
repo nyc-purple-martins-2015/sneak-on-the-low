@@ -14,6 +14,26 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    if @comment.update_attributes(comment_params)
+      redirect_to question_path(cur_question)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @question = @comment.commentable_type == "Question" ? @comment.commentable : @comment.commentable.question
+    @comment.destroy
+    redirect_to question_path(@question)
+  end
+
   private
 
   def new_comment_params
