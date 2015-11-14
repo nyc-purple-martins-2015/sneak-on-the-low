@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :votes, only: [:new, :create]
 
-  resources :comments, only: [:new, :create]
+  resources :comments
 
   resources :tags, only: [:new, :create, :show]
 
