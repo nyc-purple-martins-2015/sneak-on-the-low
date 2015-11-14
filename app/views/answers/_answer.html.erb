@@ -1,6 +1,15 @@
 <div class="question-answers">
   <%= render partial: 'votes/answer_vote_logic', :layout => false, locals: {answer: answer} %>
-  <div class="answerbody"><%= answer.content %> <div class="author-info"><%= answer.author.username %> <%= format_time(answer) %> ago </div> </div>
-  <div class="add-comment"><%= link_to "Add Comment", new_comment_path(comment: {user_id: current_user.id, commentable_id: answer.id, commentable_type: "Answer"}) %> </div>
+  <div class="answerbody"><%= answer.content %>
+    <div class="author-info"><%= answer.author.username %> <%= format_time(answer) %> ago </div>
+  </div>
+  <% if logged_in? %>
+  <div class="add-comment"><%= link_to "Add Comment", new_comment_path(comment: {user_id: current_user.id, commentable_id: answer.id, commentable_type: "Answer"}), class: "new-comment" %>
+    <div class="new-comment-form"> </div>
+  </div>
+
+  <% else %>
+    <!-- <%= link_to "Login to Comment", login_path %> -->
+  <% end %>
   <div class="clear"></div>
 </div>

@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new(new_comment_params)
+    render layout: false
   end
 
   def create
