@@ -17,7 +17,16 @@
   <% end %>
 
 <div class="answer-section">
-  <div class="answer-title">Answers:</div>
+
+  <div class="answer-title">Answers</div>
+
+  <% if logged_in? %>
+    <div class="new-answer">
+      <%= link_to "Add Answer", new_answer_path(question_id: @question.id), class: "new-answer-link" %>
+    </div>
+  <% end %>
+
+
     <div class="best-answer-div">
       <% if @best_answer.any? %>
       <%= render partial: 'answers/answer', :layout => false, locals: {answer: @best_answer} %>
@@ -25,7 +34,7 @@
     </div>
   <% @question.answers.each do |answer| %>
     <% if logged_in? %>
-      <% if question_owner?(@question) && @question.answers.where(:best => true).count == 0 %>
+      <% if object_owner?(@question) && @question.answers.where(:best => true).count == 0 %>
        <%= render template: 'answers/best', :layout => false, locals: {answer: answer} %>
       <% end %>
     <% end %>
@@ -38,10 +47,4 @@
     <% end %>
   <% end %>
 
-  <% if logged_in? %>
-    <div class="new-answer">
-      <h3>Your Answer</h3>
-      <%= render template: 'answers/new', :layout => false, locals: {question: @question, :@answer => Answer.new } %>
-    </div>
-  <% end %>
 </div>

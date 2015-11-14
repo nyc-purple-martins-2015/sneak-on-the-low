@@ -7,8 +7,8 @@ module ApplicationHelper
     @current_user ||= User.find(session[:user_id]) if logged_in?
   end
 
-  def question_owner?(question)
-    current_user == question.author
+  def object_owner?(object)
+    current_user == object.author
   end
 
   def format_time(object)
@@ -16,7 +16,8 @@ module ApplicationHelper
   end
 
   def voted_already?(object)
-    comments = object.comments.all
-    comments.exists?(:user_id => current_user.id)
+    votes = object.votes.all
+    votes.exists?(:user_id => current_user.id)
   end
+
 end
