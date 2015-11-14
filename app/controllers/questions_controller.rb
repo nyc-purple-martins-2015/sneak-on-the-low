@@ -30,6 +30,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.includes(:answers).includes(:comments).find(params[:id])
+    @best_answer = @question.answers.where(:best => true)
   end
 
   private

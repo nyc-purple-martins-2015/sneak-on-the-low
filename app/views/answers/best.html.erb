@@ -1,0 +1,7 @@
+<div class="best-answer">
+  <%= form_tag answer_path, :method => :PUT do %>
+  <%= label_tag @answer, :best %>
+  <%= check_box_tag "answer[best]","true" %>
+  <%= submit_tag 'Best Answer!' %>
+  <% end %>
+</div>
