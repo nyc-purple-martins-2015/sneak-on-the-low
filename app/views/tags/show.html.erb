@@ -1,0 +1,19 @@
+<div class="tag-show">
+  <div id="title">
+    <h1>Tag: <%= @tag.name %> </h1>
+  </div>
+
+  <div id="container">
+<% @tag.questions.each do |question| %>
+  <div id="each-question">
+    <div id="q-title"><%= link_to question.title, question %></div>
+    <span class="q-answers" id="Answers<%= question.id %>">Answers: <%= question.answers.count %> </span>
+    <span class="q-votes" id="Votes<%= question.id %>">| Votes: <%= question.votes.sum(:value) %> </span>
+    <div id="tags">
+    <% question.tags.each do |tag| %>
+    <span id="each-tag"><%= button_to tag.name, tag_path(tag), :method => "get", :class => "tags-btn"  %></span>
+    <% end %>
+    </div>
+  </div>
+<% end %>
+</div>
