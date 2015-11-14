@@ -1,11 +1,18 @@
-<div id="title">
-<h1> Questions: </h1>
+<!-- <video src="movietest.mp4"> </video> -->
+<div class="index-video-container">
+  <%= video_tag "movietest.mp4", :controls => false, :autoplay => true, :loop => true, :class => "bannervideo" %>
+  <div class="index-video-content">
+    <h3> Meet and Mingle <br> with sexy "singles" </h3>
+
+  </div>
 </div>
+<div id="title">
+    <h1> Questions: </h1>
+    </div>
 
-<% if logged_in? %>
-    <div id="new-question"><%= button_to "Ask New Question", new_question_path, :method => "get" %></div><br>
-<% end %>
-
+    <% if logged_in? %>
+        <div id="new-question"><%= button_to "Ask New Question", new_question_path, :method => "get" %></div><br>
+    <% end %>
 <div id="container">
 <% @questions.each do |question| %>
 <!-- The votes and answers sum queries here is costly because they hits the database. We would need to add an attribute to questions that has it's vote and answers count that auto-updates -->
