@@ -29,9 +29,27 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @question = Question.find(params[:id])
+    @tags = @question.tags
+    render :edit
   end
 
-  def delete
+  def update
+    @question = Question.find(params[:id])
+    if @question.update_attributes(question_params)
+      if tag_params != nil
+        Tag.seperate_new_tags(tag_params[:name], @question)
+      end
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    redirect_to root_path
   end
 
   def show

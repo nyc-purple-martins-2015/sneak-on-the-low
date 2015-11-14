@@ -17,7 +17,7 @@
   background-color: #D8D6D6;
   box-shadow: 10px 10px 5px #5A5A5A;
   margin: 2em;
-  height: 8em;
+  height: 10em;
   width: 25%;
   position: left;
   text-align: center;
@@ -26,38 +26,57 @@
   float: left;
 }
 
+#each-question:after {
+  padding-top: 56.25%;
+  /* 16:9 ratio */
+  display: block;
+  content: '';
+}
+
 #q-title {
+  position: relative;
+  clear: right;
   font-family: 'Stardos Stencil', cursive;
   font-size: 30px;
   margin: 5px;
 }
 
 .q-answers {
-  font-family: 'Roboto Mono', ;
+  position: relative;
+  font-family: 'Roboto Mono';
   font-size: 19px;
   margin: 2px;
 }
 
 .q-votes {
-  font-family: 'Roboto Mono', ;
+  position: relative;
+  font-family: 'Roboto Mono';
   font-size: 19px;
   margin: 2px;
 }
 
 #tags {
+  position: relative;
   font-family: 'Lato', sans-serif;
   font-size: 20px;
   margin: 5px;
 }
 
 #container {
-  margin-left: 6em
+  width: 100%;
+  padding-bottom: 75%;
 }
 
 #each-tag {
   display: inline;
   float:right;
   margin: 3px;
+}
+
+#edit-delete {
+  display: inline;
+  font-size: 35px;
+  float: right;
 }
 
 .btn {
