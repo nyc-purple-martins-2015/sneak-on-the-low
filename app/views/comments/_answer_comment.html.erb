@@ -1,1 +1,1 @@
-<div class="comment-body"><%= comment.commentor.username %>: <%= comment.content %></div>
+<div class="comment-body"><%= comment.content %> <div class="author-info"><%= comment.commentor.username %> <%= format_time(comment) %> ago </div></div>

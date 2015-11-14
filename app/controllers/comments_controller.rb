@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     if params[:comment][:commentable_type] == "Question"
       return @comment.commentable_id
     else
-      return params[:question_id]
+      return @comment.commentable.question.id
     end
   end
 
