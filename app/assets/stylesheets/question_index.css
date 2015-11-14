@@ -156,12 +156,12 @@
 
 .index-video-content {
   position: absolute;
-  top: 0px;
-  right: 0;
-  bottom: 0;
+  top: 0;
+  right: 30;
+  bottom: 20;
   left: 0;
   z-index: 2;
-  padding: 80px 20px;
+  padding: 0px 20px;
   text-align: center;
   font-family: 'Yellowtail', cursive;
   color: white;
