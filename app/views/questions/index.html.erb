@@ -11,7 +11,7 @@
     </div>
 
     <% if logged_in? %>
-        <div id="new-question"><%= button_to "Ask New Question", new_question_path, :method => "get" %></div><br>
+        <div id="new-question"><%= button_to "Ask New Question", new_question_path, :method => "get", :class => "btn"  %></div><br>
     <% end %>
 <div id="container">
 <% @questions.each do |question| %>
