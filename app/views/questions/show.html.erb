@@ -19,10 +19,16 @@
 
 
 <div class="answer-title">Answers:</div>
-
+  <div class="best-answer-div">
+    <% if @best_answer.any? %>
+    <%= render partial: 'answers/answer', :layout => false, locals: {answer: @best_answer} %>
+    <% end %>
+  </div>
 <% @question.answers.each do |answer| %>
-  <% if @question.author.id == current_user.id && @question.answers.where(:best => true).count == 0 %>
-   <%= render template: 'answers/best', :layout => false, locals: {answer: answer} %>
+  <% if logged_in? %>
+    <% if @question.author.id == current_user.id && @question.answers.where(:best => true).count == 0 %>
+     <%= render template: 'answers/best', :layout => false, locals: {answer: answer} %>
+    <% end %>
   <% end %>
   <% if answer.best == true %>
     <%= "Best Answer" %>
