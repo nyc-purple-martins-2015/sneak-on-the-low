@@ -7,12 +7,11 @@
   </div>
 </div>
 <div id="title">
-    <h1> Questions: </h1>
+    <% if logged_in? %>
+        <div id="new-question"><%= button_to "Ask New Question", new_question_path, :method => "get", :class => "btn"  %></div><br>
+    <% end %>
     </div>
 
-    <% if logged_in? %>
-        <div id="new-question"><%= button_to "Ask New Question", new_question_path, :method => "get" %></div><br>
-    <% end %>
 <div id="container">
 <% @questions.each do |question| %>
 <!-- The votes and answers sum queries here is costly because they hits the database. We would need to add an attribute to questions that has it's vote and answers count that auto-updates -->
@@ -20,9 +19,9 @@
     <div id="q-title"><%= link_to question.title, question %></div>
     <span class="q-answers" id="Answers<%= question.id %>">Answers: <%= question.answers.count %> </span>
     <span class="q-votes" id="Votes<%= question.id %>">| Votes: <%= question.votes.sum(:value) %> </span>
-    <div id="tags">Tags:
+    <div id="tags">
     <% question.tags.each do |tag| %>
-    <span><%= link_to tag.name, tag_path(tag) %></span>
+    <span id="each-tag"><%= button_to tag.name, tag_path(tag), :method => "get", :class => "tags-btn"  %></span>
     <% end %>
     </div>
   </div>

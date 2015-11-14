@@ -28,6 +28,12 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def delete
+  end
+
   def show
     @question = Question.includes(:answers).includes(:comments).find(params[:id])
     @best_answer = @question.answers.where(:best => true)
