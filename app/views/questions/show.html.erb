@@ -1,50 +1,39 @@
 <% if !logged_in? %>
   <div class="login-prompt"> <%= link_to "Login to Vote or Comment", login_path %> </div>
 <% end %>
+<div class="question">
+  <div class="question-title">
+   <%= @question.title %>
+  </div>
+  <div class="question-content">
+    <span class="question-vote">
+      <%= render partial: 'votes/question_vote_logic', :layout => false, locals: {question: @question} %>
+    </span>
+     <%= render partial: 'question_display', :layout => false, locals: {question: @question} %>
+     <div class="clear"> </div>
+  </div>
 
-<div class="question-title">
- <%= @question.title %>
+    <% @question.comments.each do |comment| %>
+      <%= render partial: 'comments/question_comment', :layout => false, locals: {comment: comment} %>
+    <% end %>
 </div>
-<div class="question-content">
-  <span class="question-vote">
-    <%= render partial: 'votes/question_vote_logic', :layout => false, locals: {question: @question} %>
-  </span>
-   <%= render partial: 'question_display', :layout => false, locals: {question: @question} %>
-</div>
-
-  <% @question.comments.each do |comment| %>
-    <%= render partial: 'comments/question_comment', :layout => false, locals: {comment: comment} %>
-  <% end %>
-
-<div class="answer-section">
-
+<div class="answers">
   <div class="answer-title">Answers</div>
-
   <% if logged_in? %>
     <div class="new-answer">
       <%= link_to "Add Answer", new_answer_path(question_id: @question.id), class: "new-answer-link" %>
     </div>
   <% end %>
 
-
-    <div class="best-answer-div">
-      <% if @best_answer.any? %>
-      <%= render partial: 'answers/answer', :layout => false, locals: {answer: @best_answer} %>
-      <% end %>
+  <div class="answer-section">
+    <ul id="tabs">
+      <li><%= link_to "Most Recent", "/questions/#{@question.id}/answers?sort=recent", class: "answer-sort-link" %></li>
+      <li><%= link_to "Highest Voted", "/questions/#{@question.id}/answers?sort=vote", class: "answer-sort-link" %></li>
+      <li><%= link_to "Trending", "/questions/#{@question.id}/answers?sort=trending", class: "answer-sort-link" %></li>
+    </ul>
+    <hr>
+    <div class="answer-display">
+      <%= render partial: 'answers/show', :layout => false, locals: {question: @question, answers: @question.answers} %>
     </div>
-  <% @question.answers.each do |answer| %>
-    <% if logged_in? %>
-      <% if object_owner?(@question) && @question.answers.where(:best => true).count == 0 %>
-       <%= render template: 'answers/best', :layout => false, locals: {answer: answer} %>
-      <% end %>
-    <% end %>
-    <% if answer.best == true %>
-      <%= "Best Answer" %>
-    <% end %>
-    <%= render partial: 'answers/answer', :layout => false, locals: {answer: answer} %>
-    <% answer.comments.each do |comment| %>
-      <%= render partial: 'comments/answer_comment', :layout => false, locals: {comment: comment} %>
-    <% end %>
-  <% end %>
-
+  </div>
 </div>

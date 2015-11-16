@@ -1,0 +1,3 @@
+<% question.tags.each do |tag| %>
+  <div class="question-tag"> <%= link_to tag.name, tag_path(tag), :class => "tags-btn" %> </div>
+<% end %>

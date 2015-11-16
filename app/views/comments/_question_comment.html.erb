@@ -2,7 +2,7 @@
   <%= comment.content %>
   <div class="comment-author-info"><%= comment.commentor.username %> <%= format_time(comment) %> ago</div>
   <% if logged_in? && comment.user_id == current_user.id %>
-    <div id="edit-delete"><%= link_to image_tag("glyphicons-31-pencil.png", :border => 0), edit_comment_path(comment), method: :get %> | <%= link_to image_tag("glyphicons-193-circle-remove.png", :border => 0), comment_path(comment), method: :delete %></div>
+    <div id="comment-edit-delete"><%= link_to image_tag("glyphicons-31-pencil.png", :border => 0), edit_comment_path(comment), method: :get %> | <%= link_to image_tag("glyphicons-193-circle-remove.png", :border => 0), comment_path(comment), method: :delete %></div>
     <% end %>
 </div>
 
