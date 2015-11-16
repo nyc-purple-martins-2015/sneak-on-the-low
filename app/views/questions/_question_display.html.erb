@@ -1,6 +1,11 @@
 
 <div class="question-body">
    <%= question.content %> <div class="author-info"><%= question.author.username %> <%= format_time(question) %> ago</div>
+
+   <div class="question-tags-container">
+    <%= render partial: 'tags/tag', :layout => false, locals: {question: question} %>
+   </div>
+
   <div class="add-comment">
     <% if logged_in? %>
       <%= link_to "Add Comment", new_comment_path(comment: {user_id: current_user.id, commentable_id: question.id, commentable_type: "Question"}), class: "new-comment" %>

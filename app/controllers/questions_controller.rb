@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+    render :layout => "home"
   end
 
   def new
@@ -55,6 +56,19 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.includes(:answers).includes(:comments).find(params[:id])
     @best_answer = @question.answers.where(:best => true)
+  end
+
+  def answers
+     @question = Question.find(params[:id])
+    case params[:sort]
+    when "recent"
+      @answers = @question.answers.order('updated_at DESC')
+    when "vote"
+      @answers = @question.answers.sort_by { |answer| 0 - answer.votes.sum(:value)}
+    when "trending"
+      @answers = @question.answers.sort_by { |answer| 0 - answer.comments.count}
+    end
+    render partial: 'answers/show', :layout => false, locals: {question: @question, answers: @answers}
   end
 
   private
