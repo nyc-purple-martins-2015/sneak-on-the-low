@@ -1,9 +1,9 @@
 <div class="answervote">
   <div class="votecount"><%= answer.votes.sum(:value) %></div>
   <div class="votebuttons">
-    <% if logged_in? && !voted_already?(answer) && !object_owner?(answer)%>
-      <div><%= link_to image_tag("glyphicons-202-upload.png", :border => 0), votes_path(answer.id, vote: {value: 1, user_id: session[:user_id], voteable_id: answer.id, voteable_type: "Answer"}, question_id: answer.question.id ), method: :post %></div>
-      <div><%= link_to image_tag("glyphicons-201-download.png", :border => 0), votes_path(answer.id, vote: {value: -1, user_id: session[:user_id], voteable_id: answer.id, voteable_type: "Answer"}, question_id: answer.question.id ), method: :post %></div>
+    <% if answer.voteable_by?(current_user) %>
+      <div><%= link_to image_tag("glyphicons-202-upload.png", :border => 0), votes_path(answer.id, vote: {value: 1, voteable_id: answer.id, voteable_type: "Answer"}, question_id: answer.question.id ), method: :post %></div>
+      <div><%= link_to image_tag("glyphicons-201-download.png", :border => 0), votes_path(answer.id, vote: {value: -1, voteable_id: answer.id, voteable_type: "Answer"}, question_id: answer.question.id ), method: :post %></div>
     <% else %>
       <!-- <div><%= link_to "Login to Vote", login_path %></div> -->
     <% end %>

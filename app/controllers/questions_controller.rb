@@ -11,21 +11,16 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    if current_user
-      @question = Question.new(question_params)
-      if @question.save
-        if tag_params != nil
-          Tag.seperate_tags(tag_params[:name], @question)
-          tags = @question.tags.new(tag_params)
-        end
-        redirect_to question_path(@question)
-      else
-       #flash error message
-        render :new
+    @question = Question.new(question_params)
+    if @question.save
+      if tag_params != nil
+        Tag.seperate_tags(tag_params[:name], @question)
+        tags = @question.tags.new(tag_params)
       end
+      redirect_to question_path(@question)
     else
-      #flash error message
-      redirect_to login_path
+     #flash error message
+      render :new
     end
   end
 
@@ -55,7 +50,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.includes(:answers).includes(:comments).find(params[:id])
-    @best_answer = @question.answers.where(:best => true)
+    @best_answer = @question.best_answer
   end
 
   def answers
@@ -74,7 +69,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    question_params = params.require(:question).permit(:title, :content, :user_id)
+    question_params = params.require(:question).permit(:title, :content).merge(author: current_user)
   end
 
   def tag_params

@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  include UserRelationships
+
   belongs_to :author, class_name: 'User', foreign_key: :user_id
   has_many :answers
   has_many :votes, as: :voteable
@@ -7,4 +9,12 @@ class Question < ActiveRecord::Base
   has_many :tags, through: :question_tags
 
   validates_presence_of :title, :content, :author
+
+  def best_answer
+    answers.where(best: true).first
+  end
+
+  def has_best_answer?
+    !!best_answer
+  end
 end

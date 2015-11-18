@@ -6,7 +6,7 @@ class VotesController < ApplicationController
 
   private
   def vote_params
-    params.require(:vote).permit(:user_id, :value, :voteable_id, :voteable_type)
+    params.require(:vote).permit(:value, :voteable_id, :voteable_type).merge(voter: current_user)
   end
 
   def cur_question

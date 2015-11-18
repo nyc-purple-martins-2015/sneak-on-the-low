@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   def new
-    @answer = current_user.answers.new
+    @answer = Answer.new
     @question_id = params[:question_id]
     render layout: false
   end
@@ -28,9 +28,9 @@ class AnswersController < ApplicationController
   end
 
   def destroy
-    @answer = Answer.find(params[:id])
-    @question = @answer.question
-    @answer.destroy
+    answer = Answer.find(params[:id])
+    question = answer.question
+    answer.destroy
     redirect_to question_path(@question)
   end
 
