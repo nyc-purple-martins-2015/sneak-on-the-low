@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   def new
-    @answer = current_user.answers.new
+    @answer = Answer.new
     @question_id = params[:question_id]
     render layout: false
   end
