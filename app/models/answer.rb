@@ -1,4 +1,5 @@
 class Answer < ActiveRecord::Base
+  include UserRelationships
   belongs_to :author, class_name: 'User', foreign_key: :user_id
   belongs_to :question
   has_many :votes, as: :voteable
