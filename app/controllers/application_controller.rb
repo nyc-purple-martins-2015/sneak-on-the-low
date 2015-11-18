@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :logged_in?, :current_user
 
+  before_action :ensure_current_user, only: [:create, :update, :destroy]
+
+  def ensure_current_user
+    redirect_to root_path unless current_user
+  end
+
   def logged_in?
     !!current_user
   end

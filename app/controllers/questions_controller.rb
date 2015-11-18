@@ -11,21 +11,16 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    if current_user
-      @question = Question.new(question_params)
-      if @question.save
-        if tag_params != nil
-          Tag.seperate_tags(tag_params[:name], @question)
-          tags = @question.tags.new(tag_params)
-        end
-        redirect_to question_path(@question)
-      else
-       #flash error message
-        render :new
+    @question = Question.new(question_params)
+    if @question.save
+      if tag_params != nil
+        Tag.seperate_tags(tag_params[:name], @question)
+        tags = @question.tags.new(tag_params)
       end
+      redirect_to question_path(@question)
     else
-      #flash error message
-      redirect_to login_path
+     #flash error message
+      render :new
     end
   end
 
