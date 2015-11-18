@@ -8,7 +8,7 @@
   <div class="add-comment"><%= link_to "Add Comment", new_comment_path(comment: {commentable_id: answer.id, commentable_type: "Answer"}), class: "new-comment" %>
     <div class="new-comment-form"> </div>
   </div>
-   <% if logged_in? && answer.user_id == current_user.id %>
+   <% if answer.authored_by?(current_user) %>
     <div id="edit-delete"><%= link_to image_tag("glyphicons-31-pencil.png", :border => 0), edit_answer_path(answer), method: :get %> | <%= link_to image_tag("glyphicons-193-circle-remove.png", :border => 0), answer_path(answer), method: :delete %></div>
     <% end %>
 
