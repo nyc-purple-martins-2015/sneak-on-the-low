@@ -69,7 +69,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    question_params = params.require(:question).permit(:title, :content, :user_id)
+    question_params = params.require(:question).permit(:title, :content).merge(author: current_user)
   end
 
   def tag_params

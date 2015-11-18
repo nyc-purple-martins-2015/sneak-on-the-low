@@ -2,7 +2,6 @@
   <%= f.label :content %>
   <%= f.text_field :content %>
 
-  <%= hidden_field(:comment, :user_id, :value => @comment.user_id) %>
   <%= hidden_field(:comment, :commentable_id, :value => @comment.commentable_id ) %>
   <%= hidden_field(:comment, :commentable_type, :value => @comment.commentable_type) %>
   <%= f.submit %>

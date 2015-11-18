@@ -3,7 +3,6 @@
 
   <%= form_for @question, method: "put" do |f| %>
 
-    <%= f.hidden_field :user_id, value: current_user.id%>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title, value: @question.title %>
